@@ -8,11 +8,11 @@
 		<version>3.0.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.voyage</groupId>
+	<groupId>com.soccerclub</groupId>
 	<artifactId>discovery</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>discovery</name>
-	<description>discovery server for voyage.com</description>
+	<description>discovery server for soccerclub</description>
 	<properties>
 		<java.version>17</java.version>
 		<spring-cloud.version>2022.0.2</spring-cloud.version>

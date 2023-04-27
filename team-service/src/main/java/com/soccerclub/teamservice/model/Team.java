@@ -25,8 +25,8 @@ public class Team {
     String name;
 
     @NonNull
-    @Column(name = "coach_name")
-    String coachName;
+    @Column(name = "coach_id")
+    int coachId;
 
     @NonNull
     @Column(name = "age_group")
@@ -34,8 +34,5 @@ public class Team {
 
     @OneToMany(mappedBy = "team",cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     List<Player> players;
-
-
-
 
 }
