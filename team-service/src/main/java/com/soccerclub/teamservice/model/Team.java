@@ -6,9 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.hibernate.annotations.Cache;
 
-import java.util.ArrayList;
 import java.util.List;
 @Table(name="teams")
 @NoArgsConstructor
@@ -26,7 +24,7 @@ public class Team {
 
     @NonNull
     @Column(name = "coach_id")
-    int coachId;
+    int coachid;
 
     @NonNull
     @Column(name = "age_group")
