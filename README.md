@@ -9,6 +9,7 @@ The soccer club management system includes the following features:
 
 - Adding, editing, and deleting teams
 - Adding, editing, and deleting players
+- Adding, editing, and deleting trainings
 - Adding, editing, and deleting games
 - Viewing and updating team and player stats
 - Order a team's apparel from the club's online shop.

@@ -9,11 +9,13 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author nesibe karatas
  */
 @Entity
+@Builder
 @Getter
 @Setter
 @AllArgsConstructor
@@ -44,7 +46,7 @@ public class Coach {
     @NonNull
     String password;
 
-//    List<Team> teams= new ArrayList<>();
+     List<Team> teams= new ArrayList<>();
 
 
 }
