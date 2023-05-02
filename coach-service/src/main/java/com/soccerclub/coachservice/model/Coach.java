@@ -1,9 +1,7 @@
 package com.soccerclub.coachservice.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Digits;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
@@ -23,10 +21,10 @@ import java.util.List;
 @Slf4j
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor(force = true)
-public class Coach {
+public class Coach  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    Integer id;
 
     @NonNull
     String firstName;
@@ -38,6 +36,7 @@ public class Coach {
     String email;
 
     @NonNull
+    @Digits(fraction = 0, integer = 12)
     String phoneNumber;
 
     @NonNull
@@ -46,7 +45,15 @@ public class Coach {
     @NonNull
     String password;
 
-     List<Team> teams= new ArrayList<>();
+    @NonNull
+    @Transient
+    String confirmPassword;
+    @Enumerated(EnumType.STRING)
+    Gender gender;
+    @Column(unique = true)
+    String profileImageId;
+
+     //List<Team> teams= new ArrayList<>();
 
 
 }
