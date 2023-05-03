@@ -8,8 +8,8 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.temporal.TemporalAmount;
 
 /**
  * @author nesibe karatas
@@ -29,6 +29,9 @@ public class Training {
     Long id;
 
     @NonNull
+    LocalDate date;
+
+    @NonNull
     LocalTime startTime;
 
     @NonNull
@@ -37,7 +40,7 @@ public class Training {
     @NonNull
     String fieldName;
 
-    @NonNull
-    String teamName;//should be refactored once relationship is defined
+    //@NonNull
+   // Team teamName;//should be refactored once relationship is defined
 
 }
