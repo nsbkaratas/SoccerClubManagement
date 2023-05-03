@@ -1,30 +1,28 @@
 package com.soccerclub.teamservice.model;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.util.List;
-@Table(name="teams")
+@Getter
+@Setter
 @NoArgsConstructor
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
 public class Team {
     @Id
-    @Column(name="team_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
     @NonNull
-    @Column(name = "team_name")
+    @Column(name = "team_name", unique = true)
     String name;
 
     @NonNull
     @Column(name = "coach_id")
-    int coachid;
+    int coachId;
 
     @NonNull
     @Column(name = "age_group")

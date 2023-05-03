@@ -1,10 +1,8 @@
-package com.soccerclub.coachservice.dto;
-
-
+package com.soccerclub.teamservice.dto;
 
 import java.util.List;
 
-public record CoachDTO(
+public record CoachDto(
         Integer id,
         String firstName,
         String lastName,
@@ -13,7 +11,7 @@ public record CoachDTO(
         String username,
         String gender,
         String profileImageId,
-       List<Integer> teamIds
+        List<Integer> teamIds
 ) {
 
 }

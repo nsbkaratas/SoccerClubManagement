@@ -53,7 +53,7 @@ public class Coach  {
     @Column(unique = true)
     String profileImageId;
 
-     //List<Team> teams= new ArrayList<>();
+     List<Integer> teamIds= new ArrayList<>();
 
 
 }

@@ -2,11 +2,12 @@ package com.soccerclub.coachservice.controller;
 
 import com.soccerclub.coachservice.dto.CoachDTO;
 import com.soccerclub.coachservice.model.Coach;
-import com.soccerclub.coachservice.repository.CoachRepository;
+
 import com.soccerclub.coachservice.service.CoachService;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
@@ -15,20 +16,21 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.List;
 
+@AllArgsConstructor
 @RestController
+@Slf4j
 @RequestMapping("/coach")
 public class CoachController {
-
-
     private static final Logger LOGGER = LoggerFactory.getLogger(CoachController.class);
-    @Autowired
-    private CoachService coachService;
+
+    private final CoachService coachService;
 
 
     @PostMapping("/save")
     public ResponseEntity<?> saveCoach(@RequestBody Coach coach){
-        System.out.println("inside saveCoach");
+
         coachService.saveCoach(coach);
+        log.warn("A coach is created");
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
@@ -47,6 +49,7 @@ public class CoachController {
     @PutMapping("/{id}")
     public ResponseEntity<?> updateCoach(@PathVariable Integer id, @RequestBody Coach coach){
         coachService.updateCoach(id, coach);
+        log.warn("A coach is updated");
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -58,6 +61,7 @@ public class CoachController {
             @PathVariable("coachId") Integer coachId,
             @RequestParam("file") MultipartFile file) {
         coachService.uploadCoachProfileImage(coachId, file);
+        log.warn("A coach profile is uploaded");
     }
 
     @GetMapping("/profile-image/{fileName}")
