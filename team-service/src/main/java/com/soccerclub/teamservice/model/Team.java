@@ -9,7 +9,7 @@ import lombok.experimental.FieldDefaults;
 
 import java.util.List;
 @Table(name="teams")
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
