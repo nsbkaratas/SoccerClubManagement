@@ -28,23 +28,23 @@ public class TeamController {
     }
 
 
-    @GetMapping("/list")
+    @GetMapping("/list/all")
     public List<TeamDto> getTeams() {
         return teamService.findAllTeams();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/list/{id}")
     public ResponseEntity<TeamDto> getTeamById(@PathVariable Integer id){
         TeamDto team = teamService.findTeamById(id);
         return new ResponseEntity<>(team, HttpStatus.OK);
     }
 
-    @GetMapping("/{teamName}")
-    public ResponseEntity<TeamDto> getTeamByName(@PathVariable String teamName){
-
-        TeamDto team = teamService.findTeamByName(teamName);
-        return new ResponseEntity<>(team, HttpStatus.OK);
-    }
+//    @GetMapping("/list/{teamName}")
+//    public ResponseEntity<TeamDto> getTeamByName(@PathVariable String teamName){
+//
+//        TeamDto team = teamService.findTeamByName(teamName);
+//        return new ResponseEntity<>(team, HttpStatus.OK);
+//    }
 
     @PutMapping("/{id}")
     public ResponseEntity<?> updateTeam(@PathVariable Integer id, @RequestBody Team team){

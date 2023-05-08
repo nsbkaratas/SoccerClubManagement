@@ -29,7 +29,7 @@ public class Team {
     @Column(name = "age_group")
     String ageGroup;
 
-    @OneToMany(mappedBy = "team",cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-    List<Player> players;
+//    @OneToMany(mappedBy = "team",cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+//    List<Player> players;
 
 }

@@ -13,7 +13,7 @@ public record CoachDTO(
         String username,
         String gender,
         String profileImageId,
-       List<Integer> teamIds
+       List<TeamDto> teamDtos
 ) {
 
 }

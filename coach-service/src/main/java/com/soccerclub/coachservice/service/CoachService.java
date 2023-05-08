@@ -7,7 +7,6 @@ import com.soccerclub.coachservice.exception.CoachIdNotFoundException;
 import com.soccerclub.coachservice.model.Coach;
 import com.soccerclub.coachservice.repository.CoachRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
@@ -30,11 +29,16 @@ import java.util.stream.Collectors;
 public class CoachService {
 
     private final Path FOLDER_PATH = Paths.get("./coach-service/uploads/");
-    @Autowired
-    private CoachRepository coachRepository;
 
-    @Autowired
-    private CoachDTOMapper coachDTOMapper;
+    private final CoachRepository coachRepository;
+    private final CoachDTOMapper coachDTOMapper;
+    private final TeamProxy teamProxy;
+
+    public CoachService(CoachRepository coachRepository, CoachDTOMapper coachDTOMapper, TeamProxy teamProxy) {
+        this.coachRepository = coachRepository;
+        this.coachDTOMapper = coachDTOMapper;
+        this.teamProxy = teamProxy;
+    }
 
 
     public void saveCoach(Coach coach) {
@@ -67,8 +71,7 @@ public class CoachService {
         coachToUpdate.setPhoneNumber(coach.getPhoneNumber());
         coachToUpdate.setPassword(coach.getPassword());
         coachToUpdate.setGender(coach.getGender());
-
-        //coachToUpdate.setTeams(coach.getTeams());
+        coachToUpdate.setTeamIds(coach.getTeamIds());
         coachRepository.save(coachToUpdate);
     }
 
