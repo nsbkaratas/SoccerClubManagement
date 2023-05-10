@@ -32,9 +32,8 @@ public class Player {
     @Column(name="age")
     Integer age;
 
-//    @ManyToOne
-//    @JoinColumn(name = "team_id")
-//    Team team;
+    @ManyToOne
+    Team team;
 
     public Integer getId() {
         return id;
@@ -52,9 +51,9 @@ public class Player {
         return age;
     }
 
-//    public Team getTeam() {
-//        return team;
-//    }
+    public Team getTeam() {
+       return team;
+   }
 
     public void setId(Integer id) {
         this.id = id;
@@ -72,9 +71,9 @@ public class Player {
         this.age = age;
     }
 
-//    public void setTeam(Team team) {
-//        this.team = team;
-//    }
+    public void setTeam(Team team) {
+        this.team = team;
+    }
 
     @Override
     public boolean equals(Object o) {

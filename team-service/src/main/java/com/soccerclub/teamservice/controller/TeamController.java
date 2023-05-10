@@ -39,12 +39,12 @@ public class TeamController {
         return new ResponseEntity<>(team, HttpStatus.OK);
     }
 
-//    @GetMapping("/list/{teamName}")
-//    public ResponseEntity<TeamDto> getTeamByName(@PathVariable String teamName){
-//
-//        TeamDto team = teamService.findTeamByName(teamName);
-//        return new ResponseEntity<>(team, HttpStatus.OK);
-//    }
+    @GetMapping("/list-by-name/{teamName}")
+    public ResponseEntity<TeamDto> getTeamByName(@PathVariable String teamName){
+
+        TeamDto team = teamService.findTeamByName(teamName);
+        return new ResponseEntity<>(team, HttpStatus.OK);
+    }
 
     @PutMapping("/{id}")
     public ResponseEntity<?> updateTeam(@PathVariable Integer id, @RequestBody Team team){
