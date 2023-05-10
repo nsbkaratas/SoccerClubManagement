@@ -10,8 +10,7 @@ public record CoachDto(
         String phoneNumber,
         String username,
         String gender,
-        String profileImageId,
-        List<Integer> teamIds
+        String profileImageId
 ) {
 
 }
