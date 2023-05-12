@@ -1,4 +1,4 @@
-package com.voyage.configserver;
+package com.soccerclub.configserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

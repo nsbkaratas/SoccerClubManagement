@@ -2,8 +2,10 @@ package com.soccerclub.coachservice.service;
 
 import com.soccerclub.coachservice.controller.CoachController;
 import com.soccerclub.coachservice.dto.CoachDTO;
+import com.soccerclub.coachservice.dto.CoachCredentialDTO;
 import com.soccerclub.coachservice.exception.CoachAlreadyExists;
 import com.soccerclub.coachservice.exception.CoachIdNotFoundException;
+import com.soccerclub.coachservice.exception.CoachUsernameNotFoundException;
 import com.soccerclub.coachservice.model.Coach;
 import com.soccerclub.coachservice.repository.CoachRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -32,12 +34,14 @@ public class CoachService {
 
     private final CoachRepository coachRepository;
     private final CoachDTOMapper coachDTOMapper;
-    private final TeamProxy teamProxy;
+    private final CredentialDTOMapper credentialDTOMapper;
 
-    public CoachService(CoachRepository coachRepository, CoachDTOMapper coachDTOMapper, TeamProxy teamProxy) {
+
+    public CoachService(CoachRepository coachRepository, CoachDTOMapper coachDTOMapper, CredentialDTOMapper credentialDTOMapper) {
         this.coachRepository = coachRepository;
         this.coachDTOMapper = coachDTOMapper;
-        this.teamProxy = teamProxy;
+        this.credentialDTOMapper = credentialDTOMapper;
+
     }
 
 
@@ -122,4 +126,10 @@ public class CoachService {
     }
 
 
+    public CoachCredentialDTO findCoachByUsername(String username) {
+        return coachRepository.findCoachByUsername(username)
+                .map(credentialDTOMapper)
+                .orElseThrow(() ->  new CoachUsernameNotFoundException(username));
+
+    }
 }

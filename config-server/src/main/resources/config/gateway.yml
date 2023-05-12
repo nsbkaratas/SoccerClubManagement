@@ -1,0 +1,38 @@
+  server:
+    port : 8880
+
+  eureka:
+    client:
+      serviceUrl:
+        defaultZone: http://localhost:8761/eureka/
+
+  spring:
+    application:
+      name: APP-GATEWAY
+    cloud:
+      gateway:
+        routes:
+          - id: coach-service
+            uri: lb://COACH-SERVICE
+            predicates:
+              - Path=/coach/**
+            filters:
+              -AuthenticationFilter
+
+          - id: TEAM-SERVICE
+            uri: http://localhost:8090
+            predicates:
+              - Path=/team/**
+            filters:
+              - AuthenticationFilter
+
+          - id: security-service
+            uri: lb://SECURITY-SERVICE
+            predicates:
+              - Path=/auth/**
+
+
+  management:
+    tracing:
+      sampling:
+        probability: 1.0

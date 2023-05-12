@@ -1,6 +1,7 @@
 package com.soccerclub.coachservice.controller;
 
 import com.soccerclub.coachservice.dto.CoachDTO;
+import com.soccerclub.coachservice.dto.CoachCredentialDTO;
 import com.soccerclub.coachservice.model.Coach;
 
 import com.soccerclub.coachservice.service.CoachService;
@@ -45,6 +46,12 @@ public class CoachController {
     @GetMapping("/{id}")
     public ResponseEntity<CoachDTO> findCoachById(@PathVariable Integer id){
         CoachDTO coach = coachService.findCoachById(id);
+        return new ResponseEntity<>(coach, HttpStatus.OK);
+    }
+
+    @GetMapping("/validate/{username}")
+    public ResponseEntity<CoachCredentialDTO> getCoachCredentials(@PathVariable String username){
+        CoachCredentialDTO coach = coachService.findCoachByUsername(username);
         return new ResponseEntity<>(coach, HttpStatus.OK);
     }
 
